@@ -1,0 +1,498 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Tiffin Service</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<h1>Group 12</h1>
+				<nav>
+					<ul>
+						<li><a id="signup" href="signup1.html">Sign Up</a></li>
+						<li><a id="login" href="login1.html">Login</a></li>
+						<li><a href="#one">Meal Plans</a></li>
+						<li><a href="#work">Create a Plan</a></li>
+						<li><a href="#contact">Contact</a></li>
+						<li><a id="signout" href="index.html">Sign Out</a></li>
+						<li><button id="cart" onclick="window.location = 'cart.html'">View Cart</button></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Intro -->
+			<section id="intro" class="main style1 dark fullscreen">
+				<div class="content">
+					<header>
+						<h2>Online Tiffin Service</h2>
+					</header>
+					<strong>Welcome to Online Tiffin Service, a website designed by Group 12.</a><br />
+					<a href="signup1.html">Create an Account</a> to start ordering right now.</strong>
+					<footer>
+						<a href="#one" class="button style2 down">More</a>
+					</footer>
+				</div>
+			</section>
+
+		<!-- One -->
+			<section id="one" class="main style2 right dark fullscreen">
+				<div class="content box style2">
+					<header>
+						<h2>Pre-Made Health Meals:</h2>
+					</header>
+					<button><img src="IndianThali.jpeg" id="2"></img></button>
+					<button><img src="Khichdi.png" id="1"></img></button>
+				</div>
+				<a href="#two" class="button style2 down anchored">Next</a>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="main style2 left dark fullscreen">
+				<div class="content box style2">
+					<header>
+						<h2>Pre-Made Indian Thalis:</h2>
+					</header>
+					
+					<button><img src="LowCarb.png" id="3"></img></button>
+					<button><img src="unknown.png" id="4"></img></button>
+				</div>
+				<a href="#work" class="button style2 down anchored">Next</a>
+			</section>
+
+		<!-- Work -->
+			<section id="work" class="main style3 primary">
+				<div class="content">
+					<header>
+						<h2>Create your own Plan</h2>
+						<p>Tiffin service providers have repetitive menus and at times include food items that are often disliked. 
+						You either get annoyed but somehow put up with the service or you end up ordering food from your neighbouring 
+						food joint which is not really healthy and an expensive affair.
+						Take control of what you eat and customize your meal now!</p>
+					</header>
+
+					<!-- Gallery  -->
+						<div class="gallery">
+								<input type="checkbox" id="veg" name="food_type">
+	  							<label for="food_type">Veg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+									
+								<input type="checkbox" id="nonveg" name="food_type">
+	  							<label for="food_type">Non-Veg</label>
+						</div>
+								<br>
+						<div class="gallery">
+								<input type="checkbox" id="diab" name="food_type">
+	  							<label for="food_type">For Diabetics?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+									
+								<input type="checkbox" id="lac" name="food_type">
+	  							<label for="food_type">For Lactose Intolerant?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+								<input style="padding-left:20px;" type="checkbox" id="chol" name="food_type">
+	  							<label for="food_type">For High Cholestrol?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+						</div>
+
+						<button id="generateData">Get Plans</button>
+						<br>
+						<br>
+						<br>
+						<div id="FOOD">
+							
+						</div>
+
+				</div>
+			</section>
+
+		<!-- Contact -->
+			<section id="contact" class="main style3 secondary">
+				<div class="content">
+					<header>
+						<h2>Say Hello.</h2>
+						<p>Feel free to reach out to us anytime!</p>
+					</header>
+					<div class="box">
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field half"><input type="text" name="name" placeholder="Name" /></div>
+								<div class="field half"><input type="email" name="email" placeholder="Email" id="EMAIL"/></div>
+								<div class="field"><textarea name="message" placeholder="Message" rows="6" id="MESSAGE"></textarea></div>
+							</div>
+							<ul class="actions special">
+								<li><input type="submit" value="Send Message" id="SUBMIT MAIL"/></li>
+							</ul>
+						</form>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+
+				<!-- Icons -->
+					<ul class="icons">
+						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+					</ul>
+
+			</footer>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.poptrox.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+		<script type="module">
+			// Import the functions you need from the SDKs you need
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+			// TODO: Add SDKs for Firebase products th	at you want to use
+			// https://firebase.google.com/docs/web/setup#available-libraries
+		  
+			// Your web app's Firebase configuration
+			const firebaseConfig = {
+				apiKey: "AIzaSyCP1u9wnxYRw0n4naAADsKxIrDykbhnngQ",
+				authDomain: "tiffin-service-12fae.firebaseapp.com",
+				databaseURL: "https://tiffin-service-12fae-default-rtdb.firebaseio.com",
+				projectId: "tiffin-service-12fae",
+				storageBucket: "tiffin-service-12fae.appspot.com",
+				messagingSenderId: "1065193441104",
+				appId: "1:1065193441104:web:7486fcb2704305ea074e55"
+				};
+	  
+		  
+			// Initialize Firebase
+			const app = initializeApp(firebaseConfig);
+	
+			import {getDatabase, ref, set, child, update, remove, get}
+			from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js"
+	
+			const db = getDatabase();
+
+			var signup = document.getElementById("signup");
+			var login = document.getElementById("login");
+			var signout = document.getElementById("signout");
+			var getPlans = document.getElementById("generateData");
+
+			var veg = document.getElementById("veg");
+			var nonveg = document.getElementById("nonveg");
+			var diab = document.getElementById("diab");
+			var lac = document.getElementById("lac");
+			var chol = document.getElementById("chol");
+			
+			/*            
+			
+						VEG = / 
+						NON VEG = +
+						Diab = *
+						Lac = &
+						Col = %
+
+
+
+
+			*/
+			const foodItems = ["Plain Roti/*&%",
+								"Plain Paratha/*&%",
+								"Gobi Paratha/&",
+								"Aloo Paratha/&%",
+								"Kulcha/&",
+								"Puri/&",
+								"Egg Paratha+*&",
+								"Sweet Rice/&%",
+								"Plain Rice/&%",
+								"Lemon Rice/*",
+								"Jeera Rice/",
+								"Paneer Paratha/%",
+								"Aloo Gobhi/&",
+								"Matar Paneer/%",
+								"Masala Chicken+&",
+								"Boiled Chicken+*&",
+								"Afghani Chicken+&",
+								"Soya Masala/&",
+								"Patta Gobi/*&%",
+								"Moong Dal/%",
+								"Sambar/&",
+								"Ragi/&%",
+								"Bhindi/*&",
+								"Baingan Bharta/&",
+								"Mutton Gravy+&",
+								"Fish (Boneless)+*%",
+								"Fish (Boned)+*%",
+								"Chana Masala/",
+								"Daal Khichdi/*&",
+								"Palak Paneer/*&",
+								"Malai Kofta/%",
+								"Mushroom Matar/&",
+								"Karela Sabji/&%",
+								"Plain Kheer/%",
+								"Paneer Kheer/*%",
+								"Carrot Kheer/*%",
+								"Gulab Jamun/&",
+								"Rasgulla/&",
+								"Plain Curd/%",
+								"Plain Raita/%",
+								"Boondi Raita/%"];
+
+				const foodItems2 = ["Plain Roti",
+								"Plain Paratha",
+								"Gobi Paratha",
+								"Aloo Paratha",
+								"Kulcha",
+								"Puri",
+								"Egg Paratha",
+								"Sweet Rice",
+								"Plain Rice",
+								"Lemon Rice",
+								"Jeera Rice",
+								"Paneer Paratha",
+								"Aloo Gobhi",
+								"Matar Paneer",
+								"Masala Chicken",
+								"Boiled Chicken",
+								"Afghani Chicken",
+								"Soya Masala",
+								"Patta Gobi",
+								"Moong Dal",
+								"Sambar",
+								"Ragi",
+								"Bhindi",
+								"Baingan Bharta",
+								"Mutton Gravy",
+								"Fish (Boneless)",
+								"Fish (Boned)",
+								"Chana Masala",
+								"Daal Khichdi",
+								"Palak Paneer",
+								"Malai Kofta",
+								"Mushroom Matar",
+								"Karela Sabji",
+								"Plain Kheer",
+								"Paneer Kheer",
+								"Carrot Kheer",
+								"Gulab Jamun",
+								"Rasgulla",
+								"Plain Curd",
+								"Plain Raita",
+								"Boondi Raita"];
+
+			function CheckUser()
+			{
+				if (localStorage.getItem("user") === null)
+				{
+					signout.parentNode.removeChild(signout);
+				}
+				else
+				{
+					login.parentNode.removeChild(login);
+					signup.parentNode.removeChild(signup);
+				}
+			}
+		
+			function logout()
+			{
+				if (localStorage.getItem("user") === null)
+					return;
+				else
+					localStorage.removeItem('user');
+			}
+
+			signout.addEventListener('click', logout);
+			
+			const addToCart = e =>
+			{
+				const dbRef = ref(db);
+				get(child(dbRef, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart")).then((snapshot) =>
+				{
+					if (snapshot.exists())
+					{
+						set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + e.target.innerHTML),
+						{
+							[e.target.innerHTML]: 1
+						})
+						.then(() => {
+							alert("Food Item Added to Cart.");
+						})							
+					}
+				});
+			}
+
+			function UpdateList()
+			{
+				var format = '';
+				if (veg.checked)
+					format += '/';
+				if (nonveg.checked)
+					format += '+';
+				if (diab.checked)
+					format += '*';
+				if (lac.checked)
+					format += '&';
+				if (chol.checked)
+					format += '%';
+
+				var div = document.getElementById("FOOD");
+				while (div.firstChild) 
+					div.removeChild(div.lastChild);
+
+				for (let i = 0; i < foodItems.length; i++)
+				{
+					if (foodItems[i].includes(format))
+					{
+						var x = document.createElement("BUTTON");
+						div.appendChild(x);
+						var temp = foodItems[i];
+						temp = temp.replace('/', '');
+						temp = temp.replace('+', '');
+						temp = temp.replace('*', '');
+						temp = temp.replace('&', '');
+						temp = temp.replace('%', '');
+						x.innerHTML = temp;
+						
+						x.addEventListener('click', addToCart);							
+					}
+				}					
+			}		
+
+			var email = document.getElementById("EMAIL");
+			var mess = document.getElementById("MESSAGE");
+			var sub = document.getElementById("SUBMIT MAIL");
+			
+			function sendEmail() {
+				Email.send({
+					Host: "smtp.gmail.com",
+					Username: email.value,
+					To: 'loopengine.x@gmail.com',
+					From: email.value,
+					Body: mess.value,
+				})
+					.then(function (message) {
+					alert("mail sent successfully")
+					});
+			}
+			sub.addEventListener('click', sendEmail);
+			getPlans.addEventListener('click', UpdateList);
+			CheckUser();
+
+			var prePlanned1 = document.getElementById("1");
+			var prePlanned2 = document.getElementById("2");
+			var prePlanned3 = document.getElementById("3");
+			var prePlanned4 = document.getElementById("4");
+
+			const addPrePlanned = e =>
+			{
+				const dbRef = ref(db);
+				get(child(dbRef, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart")).then((snapshot) =>
+				{
+					if (snapshot.exists())
+					{
+						if ([e.target.id] == "1")						
+						{	
+							set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + foodItems2[0]),
+							{
+								[foodItems2[0]]: 1
+							})
+							set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + foodItems2[8]),
+							{
+								[foodItems2[8]]: 1
+							})
+							set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + foodItems2[20]),
+							{
+								[foodItems2[20]]: 1
+							})
+							set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + foodItems2[27]),
+							{
+								[foodItems2[27]]: 1
+							})								
+							.then(() => {
+								alert("4 Items Added to Cart.");
+							})
+						}
+						if ([e.target.id] == "2")						
+						{	
+							set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + foodItems2[0]),
+							{
+								[foodItems2[0]]: 1
+							})
+							set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + foodItems2[28]),
+							{
+								[foodItems2[28]]: 1
+							})
+							set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + foodItems2[33]),
+							{
+								[foodItems2[33]]: 1
+							})
+							set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + foodItems2[38]),
+							{
+								[foodItems2[38]]: 1
+							})
+							.then(() => {
+								alert("4 Items Added to Cart.");
+							})
+						}
+
+						if ([e.target.id] == "3")						
+						{	
+							set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + foodItems2[1]),
+							{
+								[foodItems2[1]]: 1
+							})
+							set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + foodItems2[10]),
+							{
+								[foodItems2[10]]: 1
+							})
+							set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + foodItems2[14]),
+							{
+								[foodItems2[14]]: 1
+							})
+							set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + foodItems2[24]),
+							{
+								[foodItems2[24]]: 1
+							})
+							.then(() => {
+								alert("4 Items Added to Cart.");
+							})
+						}
+
+						if ([e.target.id] == "4")						
+						{	
+							set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + foodItems2[0]),
+							{
+								[foodItems2[0]]: 1
+							})
+							set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + foodItems2[20]),
+							{
+								[foodItems2[20]]: 1
+							})
+							set(ref(db, "UsersList/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + foodItems2[15]),
+							{
+								[foodItems2[15]]: 1
+							})
+							
+							.then(() => {
+								alert("3 Items Added to Cart.");
+							})
+						}
+					}
+				});
+			}
+			
+
+				
+
+			prePlanned1.addEventListener('click', addPrePlanned);
+			prePlanned2.addEventListener('click', addPrePlanned);
+			prePlanned3.addEventListener('click', addPrePlanned);
+			prePlanned4.addEventListener('click', addPrePlanned);
+		  </script>
+
+</body>
+</html>

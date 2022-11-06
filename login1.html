@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div class="center">
+      <h1>Login</h1>
+      <div id="post">
+        <div class="txt_field">
+          <input class="field" id="UsernameBox" type="text" placeholder="Username" required>
+          <span></span>
+        </div>
+        <div class="txt_field">
+          <input class="field" id = "PasswordBox" type="password" placeholder="Password" required>
+          <span></span>
+        </div>
+        <button id="SubmitButton" value="Login">Login</button>
+        <div class="signup_link">
+          Not a member? <a href="signup1.html">Signup</a>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+			// Import the functions you need from the SDKs you need
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+			// TODO: Add SDKs for Firebase products that you want to use
+			// https://firebase.google.com/docs/web/setup#available-libraries
+		  
+			// Your web app's Firebase configuration
+			const firebaseConfig = {
+        apiKey: "AIzaSyCP1u9wnxYRw0n4naAADsKxIrDykbhnngQ",
+        authDomain: "tiffin-service-12fae.firebaseapp.com",
+        databaseURL: "https://tiffin-service-12fae-default-rtdb.firebaseio.com",
+        projectId: "tiffin-service-12fae",
+        storageBucket: "tiffin-service-12fae.appspot.com",
+        messagingSenderId: "1065193441104",
+        appId: "1:1065193441104:web:7486fcb2704305ea074e55"
+      };
+		  
+			// Initialize Firebase
+			const app = initializeApp(firebaseConfig);
+	
+			import {getDatabase, ref, set, child, update, remove, get}
+			from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js"
+	
+			const db = getDatabase();
+
+			var username_box = document.getElementById("UsernameBox");
+			var password_box = document.getElementById("PasswordBox");
+			var submitButton = document.getElementById("SubmitButton");
+
+      function AuthenticUser()
+      {
+        
+        if (username_box.value == "admin" && password_box.value == "admin")
+          window.location = "admin.html";
+
+        const dbRef = ref(db);
+
+        get(child(dbRef, "Customers/" + username_box.value)).then((snapshot) =>
+        {
+            if (snapshot.exists())
+            {
+                let dbpass = snapshot.val().Password;
+                
+                if (dbpass == password_box.value)
+                {
+                    login(snapshot.val());
+                }
+                else
+                {
+                  alert("user doesn't exist");
+                }
+            }
+        });
+      }
+
+      function login(user)
+      {
+          localStorage.setItem('user', JSON.stringify(user));
+          window.location = "index.html";
+      }
+
+      submitButton.addEventListener('click',AuthenticUser);
+			
+		  </script>
+
+  </body>
+</html>

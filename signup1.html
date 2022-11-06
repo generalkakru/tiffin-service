@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign-Up</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="center">
+      <h1>Sign Up</h1> 
+      <div id="post">    
+        <div class="txt_field">
+          <input class ="field" id="Name" type="text" placeholder="Name" required>
+          <span></span>
+         
+        </div>
+      
+        <div class="txt_field">
+          <input  class ="field" id="Username" type="text" placeholder="Username" required>
+          <span></span>
+          
+        </div>
+
+        <div class="txt_field">
+          <input class ="field" id="EmailBox" type="text" placeholder="E-mail" required>
+          <span></span>
+          
+        </div>
+        <div class="txt_field">
+          <input class ="field" id="PasswordBox" type="password" placeholder="Password" required>
+          <span></span>
+          
+        </div>
+        <div class="txt_field">
+          <input class ="field" id="ConfirmPass" type="password" placeholder="Confirm Password" required>
+          <span></span>
+
+        </div>
+        <button id="SubmitButton" value="Login"> Submit </button>
+        <div class="signup_link">
+          Already a member? <a href="login1.html">Login</a>
+        </div>
+      </div>   
+    </div>
+    <script type="module">
+      
+			// Import the functions you need from the SDKs you need
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+			// TODO: Add SDKs for Firebase products that you want to use
+			// https://firebase.google.com/docs/web/setup#available-libraries
+		  
+			// Your web app's Firebase configuration
+			// Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCP1u9wnxYRw0n4naAADsKxIrDykbhnngQ",
+        authDomain: "tiffin-service-12fae.firebaseapp.com",
+        databaseURL: "https://tiffin-service-12fae-default-rtdb.firebaseio.com",
+        projectId: "tiffin-service-12fae",
+        storageBucket: "tiffin-service-12fae.appspot.com",
+        messagingSenderId: "1065193441104",
+        appId: "1:1065193441104:web:7486fcb2704305ea074e55"
+      };
+		  
+			// Initialize Firebase
+			const app = initializeApp(firebaseConfig);
+	
+			import {getDatabase, ref, set, child, update, remove, get}
+			from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js"
+
+			const db = getDatabase();
+
+			var name_box = document.getElementById("Name");
+			var username_box = document.getElementById("Username");
+			var email_box = document.getElementById("EmailBox");
+			var enter_pass = document.getElementById("PasswordBox");
+			var confirm_pass = document.getElementById("ConfirmPass");
+      var submit_button = document.getElementById("SubmitButton");
+
+      function RegisterUser()
+      {
+        const dbRef = ref(db);
+
+        get(child(dbRef, "Customers/" + username_box.value)).then((snapshot) =>
+        {
+            if (snapshot.exists())
+            {
+              alert("exists");
+            }
+            else
+            {
+              set(ref(db, "Customers/" + username_box.value),
+              {
+                Cart: 0,
+                Username: username_box.value,
+                Name: name_box.value,
+                Email: email_box.value,
+                Password: enter_pass.value
+              })
+              .then(() => {
+                login(snapshot.value);
+                addToDaysToCart(snapshot.value);
+              })
+            }
+        });
+      }
+
+      const days = ["Monday", "Tuesday", "Wednsday", "Thursday", "Friday", "Saturday"];
+
+      function addToDaysToCart(user)
+                {
+                    const dbRef = ref(db);
+                    get(child(dbRef, "Customers/" + username_box.value + "/" + "Cart")).then((snapshot) =>
+                    {
+                        if (snapshot.exists())
+                        {
+                            for (var i = 0; i < days.length; i++)
+                            {
+                                set(ref(db, "Customers/" + username_box.value + "/" + "Cart/" + days[i]),
+                                {
+                                    [days[i]]: 0
+                                })
+
+                            }                            
+                        }
+                    });
+                }
+
+      function login(user)
+      {
+          localStorage.setItem('user', JSON.stringify(user));
+      }
+
+      submit_button.addEventListener('click',RegisterUser);
+
+		  </script>
+  </body>
+</html>

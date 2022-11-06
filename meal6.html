@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Boring Salads</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="left-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1> Pre-Made Meal </h1>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Return Home</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-4 col-12-mobile" id="sidebar">
+								<hr class="first" />
+								<section>
+									<header>
+										<h3><a>Ingredients: </a></h3>
+									</header>
+									<p>
+										+ 1 Salad ( What else are we expecting? )<br>( Veg & Non Veg )<br><br>Price per Meal: ₹60 <br> Monthly Subscription: ₹1500  <br>								
+									</p>
+									<footer>
+										<a href="#" class="button">Add to Cart</a>
+									</footer>
+								</section>
+								<hr />
+								
+							</div>
+							<div class="col-8 col-12-mobile imp-mobile" id="content">
+								<article id="main">
+									<header>
+										<h2><a>Salads</a></h2>
+										<p>
+											Imagine voluntarily seeking out Salads. <br>Kill Yoursellf. but before, subscribe to one of our meals.
+										</p>
+									</header>
+									<a class="image featured"><img src="images/SaladMax.jpg" alt="" /></a>
+									<section>
+										<header>
+											<h3>Monday</h3>
+										</header>
+										<p>
+											Chicken Salad.
+										</p>
+										<header>
+											<h3>Tuesday</h3>
+										</header>
+										<p>
+											Carrot Salad.
+										</p>
+										<header>
+											<h3>Wednesday</h3>
+										</header>
+										<p>
+											Fish Salad.
+										</p>
+										<header>
+											<h3>Thursday</h3>
+										</header>
+										<p>
+											Strawberry Salad.
+										</p>
+										<header>
+											<h3>Friday</h3>
+										</header>
+										<p>
+											Tandoori Chicken Salad.
+										</p>
+										<header>
+											<h3>Saturday</h3>
+										</header>
+										<p>
+											Sweet Potato Salad.
+										</p>
+									</section>
+								</article>
+							</div>
+						</div>
+						<hr />
+						
+
+				</div>
+
+			<!-- Footer -->
+			<div id="footer">
+				<div class="container">
+					<div class="row">
+
+						<!-- Placeholder -->
+							<section class="col-4 col-12-mobile">									
+							</section>
+
+						<!-- Contact -->
+						<section class="contact">
+							<header>
+								<h3>Like what we do?</h3>
+							</header>
+							<p>Feel free to follow us on the links below or reach out.</p>
+							<ul class="icons">
+								<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">Linkedin</span></a></li>
+							</ul>
+						</section>
+
+					</div>
+					<hr />
+					<div class="row">
+						<div class="col-12">
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+	</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+			<script type="module">
+				// Import the functions you need from the SDKs you need
+				import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+				// TODO: Add SDKs for Firebase products that you want to use
+				// https://firebase.google.com/docs/web/setup#available-libraries
+			  
+				// Your web app's Firebase configuration
+				const firebaseConfig = {
+					apiKey: "AIzaSyCP1u9wnxYRw0n4naAADsKxIrDykbhnngQ",
+					authDomain: "tiffin-service-12fae.firebaseapp.com",
+					databaseURL: "https://tiffin-service-12fae-default-rtdb.firebaseio.com",
+					projectId: "tiffin-service-12fae",
+					storageBucket: "tiffin-service-12fae.appspot.com",
+					messagingSenderId: "1065193441104",
+					appId: "1:1065193441104:web:7486fcb2704305ea074e55"
+				};
+			  
+				// Initialize Firebase
+				const app = initializeApp(firebaseConfig);
+		
+				import {getDatabase, ref, set, child, update, remove, get}
+				from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js"
+		
+				const db = getDatabase();
+	
+				var AddToCart = document.getElementById("AddToCart");
+
+				const addToCart = e =>
+				{
+					const dbRef = ref(db);
+					get(child(dbRef, "Customers/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart")).then((snapshot) =>
+					{
+						if (snapshot.exists())
+						{
+							set(ref(db, "Customers/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" +  + e.target.innerHTML),
+							{
+								[e.target.innerHTML]: 1
+							})						
+						}
+					});
+				}
+
+				const days = ["Monday", "Tuesday", "Wednsday", "Thursday", "Friday", "Saturday"];
+
+
+				const meal1 = [["Chicken Salad"],
+					["Carrot Salad"],
+					["Fish Salad"],
+					["Strawberry Salad"],
+					["Tandoori Chicken Salad"],
+					["Sweet Potato Salad"]];
+
+				var indexDay = 0;
+
+				
+				function addFoodToDays()
+                {
+                    const dbRef = ref(db);
+                    get(child(dbRef, "Customers/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + days[indexDay])).then((snapshot) =>
+                    {
+                        if (snapshot.exists())
+                        {
+                            set(ref(db, "Customers/" + JSON.parse(localStorage.getItem('user')).Username + "/" + "Cart/" + days[indexDay]),
+                            {
+                                [meal1[indexDay]]: 0
+                            }).then(() => {
+								if (indexDay < days.length-1)
+                                    {
+                                        addFoodToDays();
+                                        indexDay++;
+                                    }
+                                })
+                        }
+                    });
+                }
+
+				AddToCart.addEventListener("click", addFoodToDays);
+			
+			</script>
+	</body>
+</html>
